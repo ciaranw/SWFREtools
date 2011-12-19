@@ -22,44 +22,30 @@ public final class ShapeWithStyle implements IFileElement {
 	 */
 	private final LineStyleArray lineStyles;
 
-	/**
-	 * Number of fill index bits.
-	 */
-	private final UBits numFillBits;
 
-	/**
-	 * Number of line index bits.
-	 */
-	private final UBits numLineBits;
-
-	/**
-	 * Shape records.
-	 */
-	private final ShapeRecord shapeRecord;
+    /**
+     * Shape record
+     */
+	private final Shape shape;
 
 	/**
 	 * Creates a new ShapeWithStyle object.
 	 * 
 	 * @param fillStyles Array of fill styles.
 	 * @param lineStyles Array of line styles.
-	 * @param numFillBits Number of fill index bits.
-	 * @param numLineBits Number of line index bits.
-	 * @param shapeRecord Shape records.
+	 * @param shape Shape record.
 	 */
-	public ShapeWithStyle(final FillStyleArray fillStyles, final LineStyleArray lineStyles,
-			final UBits numFillBits, final UBits numLineBits, final ShapeRecord shapeRecord) {
+	public ShapeWithStyle(final FillStyleArray fillStyles, final LineStyleArray lineStyles, final Shape shape) {
 
 		this.fillStyles = fillStyles;
 		this.lineStyles = lineStyles;
-		this.numFillBits = numFillBits;
-		this.numLineBits = numLineBits;
-		this.shapeRecord = shapeRecord;
+		this.shape = shape;
 
 	}
 
 	@Override
 	public int getBitLength() {
-		return SWFParserHelpers.addBitLengths(fillStyles, lineStyles, numFillBits, numLineBits, shapeRecord);
+		return SWFParserHelpers.addBitLengths(fillStyles, lineStyles, shape);
 	}
 
 	@Override
@@ -86,29 +72,11 @@ public final class ShapeWithStyle implements IFileElement {
 	}
 
 	/**
-	 * Returns the number of fill index bits.
+	 * Returns the shape.
 	 *
-	 * @return The number of fill index bits.
+	 * @return The shape.
 	 */
-	public UBits getNumFillBits() {
-		return numFillBits;
-	}
-
-	/**
-	 * Returns the number of line index bits.
-	 *
-	 * @return The number of line index bits.
-	 */
-	public UBits getNumLineBits() {
-		return numLineBits;
-	}
-
-	/**
-	 * Returns the shape records.
-	 *
-	 * @return The shape records.
-	 */
-	public ShapeRecord getShapeRecord() {
-		return shapeRecord;
+	public Shape getShape() {
+		return shape;
 	}
 }

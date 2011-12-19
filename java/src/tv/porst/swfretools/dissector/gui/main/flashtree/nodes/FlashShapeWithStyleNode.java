@@ -25,9 +25,7 @@ public final class FlashShapeWithStyleNode extends FlashTreeNode<ShapeWithStyle>
 	private void createChildren() {
 		addNode("FillStyles", getUserObject().getFillStyles());
 		addNode("LineStyles", getUserObject().getLineStyles());
-		addNode("NumFillBits", getUserObject().getNumFillBits());
-		addNode("NumLineBits", getUserObject().getNumLineBits());
-		addNode("ShapeRecord", getUserObject().getShapeRecord());
+		addNode("Shape", getUserObject().getShape());
 	}
 
 	@Override

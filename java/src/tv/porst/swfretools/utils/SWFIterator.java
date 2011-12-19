@@ -3010,27 +3010,8 @@ public final class SWFIterator {
 		visit(shapeWithStyle.getFillStyles(), visitor);
 		visitor.visit(shapeWithStyle, "LineStyles", shapeWithStyle.getLineStyles());
 		visit(shapeWithStyle.getLineStyles(), visitor);
-		visitor.visit(shapeWithStyle, "NumFillBits", shapeWithStyle.getNumFillBits());
-		visitor.visit(shapeWithStyle, "NumLineBits", shapeWithStyle.getNumLineBits());
-
-		final ShapeRecord shapeRecord = shapeWithStyle.getShapeRecord();
-
-		if (shapeRecord instanceof CurvedEdgeRecord) {
-			visitor.visit(shapeWithStyle, "ShapeRecord", (CurvedEdgeRecord) shapeRecord);
-			visit((CurvedEdgeRecord) shapeRecord, visitor);
-		}
-		else if (shapeRecord instanceof EndShapeRecord) {
-			visitor.visit(shapeWithStyle, "ShapeRecord", (EndShapeRecord) shapeRecord);
-			visit((EndShapeRecord) shapeRecord, visitor);
-		}
-		else if (shapeRecord instanceof StraightEdgeRecord) {
-			visitor.visit(shapeWithStyle, "ShapeRecord", (StraightEdgeRecord) shapeRecord);
-			visit((StraightEdgeRecord) shapeRecord, visitor);
-		}
-		else if (shapeRecord instanceof StyleChangeRecord) {
-			visitor.visit(shapeWithStyle, "ShapeRecord", (StyleChangeRecord) shapeRecord);
-			visit((StyleChangeRecord) shapeRecord, visitor);
-		}
+		visitor.visit(shapeWithStyle, "Shape", shapeWithStyle.getShape());
+        visit(shapeWithStyle.getShape(), visitor);
 	}
 
 	/**
