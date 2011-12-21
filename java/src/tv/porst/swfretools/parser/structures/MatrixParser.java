@@ -1,12 +1,13 @@
 package tv.porst.swfretools.parser.structures;
 
-import static tv.porst.swfretools.parser.SWFParserHelpers.parseFlag;
-import static tv.porst.swfretools.parser.SWFParserHelpers.parseUBits;
-import static tv.porst.swfretools.parser.SWFParserHelpers.parseUBitsIf;
+import tv.porst.splib.binaryparser.Bits;
 import tv.porst.splib.binaryparser.Flag;
+import tv.porst.splib.binaryparser.FloatFBits;
 import tv.porst.splib.binaryparser.UBits;
 import tv.porst.swfretools.parser.SWFBinaryParser;
 import tv.porst.swfretools.parser.SWFParserException;
+
+import static tv.porst.swfretools.parser.SWFParserHelpers.*;
 
 /**
  * Used to parse Matrix structures.
@@ -37,15 +38,15 @@ public final class MatrixParser {
 
 		final Flag hasScale = parseFlag(parser, 0x00006, fieldName + "::HasScale");
 		final UBits nScaleBits = parseUBitsIf(parser, 5, 0x00006, hasScale.value(), fieldName + "::NScaleBits");
-		final UBits scaleX = parseUBitsIf(parser, nScaleBits == null ? 0 : nScaleBits.value(), 0x00006, hasScale.value(), fieldName + "::ScaleX");
-		final UBits scaleY = parseUBitsIf(parser, nScaleBits == null ? 0 : nScaleBits.value(), 0x00006, hasScale.value(), fieldName + "::ScaleY");
+		final FloatFBits scaleX = parseFloatFBitsIf(parser, nScaleBits == null ? 0 : nScaleBits.value(), 0x00006, hasScale.value(), fieldName + "::ScaleX");
+		final FloatFBits scaleY = parseFloatFBitsIf(parser, nScaleBits == null ? 0 : nScaleBits.value(), 0x00006, hasScale.value(), fieldName + "::ScaleY");
 		final Flag hasRotate = parseFlag(parser, 0x00006, fieldName + "::HasRotate");
 		final UBits nRotateBits = parseUBitsIf(parser, 5, 0x00006, hasRotate.value(), fieldName + "::NRotateBits");
-		final UBits rotateSkew0 = parseUBitsIf(parser, nRotateBits == null ? 0 : nRotateBits.value(), 0x00006, hasRotate.value(), fieldName + "::rotateSkew0");
-		final UBits rotateSkew1 = parseUBitsIf(parser, nRotateBits == null ? 0 : nRotateBits.value(), 0x00006, hasRotate.value(), fieldName + "::rotateSkew1");
+		final FloatFBits rotateSkew0 = parseFloatFBitsIf(parser, nRotateBits == null ? 0 : nRotateBits.value(), 0x00006, hasRotate.value(), fieldName + "::rotateSkew0");
+		final FloatFBits rotateSkew1 = parseFloatFBitsIf(parser, nRotateBits == null ? 0 : nRotateBits.value(), 0x00006, hasRotate.value(), fieldName + "::rotateSkew1");
 		final UBits nTranslateBits = parseUBits(parser, 5, 0x00006, fieldName + "::NTranslateBits");
-		final UBits translateX = parseUBits(parser, nTranslateBits == null ? 0 : nTranslateBits.value(), 0x00006, fieldName + "::TranslateX");
-		final UBits translateY = parseUBits(parser, nTranslateBits == null ? 0 : nTranslateBits.value(), 0x00006, fieldName + "::TranslateY");
+		final Bits translateX = parseSBits(parser, nTranslateBits == null ? 0 : nTranslateBits.value(), 0x00006, fieldName + "::TranslateX");
+		final Bits translateY = parseSBits(parser, nTranslateBits == null ? 0 : nTranslateBits.value(), 0x00006, fieldName + "::TranslateY");
 
 		parser.align();
 

@@ -1,8 +1,6 @@
 package tv.porst.swfretools.parser.structures;
 
-import tv.porst.splib.binaryparser.Flag;
-import tv.porst.splib.binaryparser.IFileElement;
-import tv.porst.splib.binaryparser.UBits;
+import tv.porst.splib.binaryparser.*;
 import tv.porst.swfretools.parser.SWFParserHelpers;
 
 /**
@@ -26,12 +24,12 @@ public final class Matrix implements IFileElement {
 	/**
 	 * X scale value.
 	 */
-	private final UBits scaleX;
+	private final FloatFBits scaleX;
 
 	/**
 	 * Y scale value.
 	 */
-	private final UBits scaleY;
+	private final FloatFBits scaleY;
 
 	/**
 	 * Has rotate and skew values if set.
@@ -46,12 +44,12 @@ public final class Matrix implements IFileElement {
 	/**
 	 * First rotate and skew value.
 	 */
-	private final UBits rotateSkew0;
+	private final FloatFBits rotateSkew0;
 
 	/**
 	 * Second rotate and skew value.
 	 */
-	private final UBits rotateSkew1;
+	private final FloatFBits rotateSkew1;
 
 	/**
 	 * Bits in each translate value field.
@@ -61,12 +59,12 @@ public final class Matrix implements IFileElement {
 	/**
 	 * X translate value in twips.
 	 */
-	private final UBits translateX;
+	private final Bits translateX;
 
 	/**
 	 * Y translate value in twips.
 	 */
-	private final UBits translateY;
+	private final Bits translateY;
 
 	/**
 	 * Creates a new Matrix object.
@@ -83,9 +81,9 @@ public final class Matrix implements IFileElement {
 	 * @param translateX X translate value in twips.
 	 * @param translateY Y translate value in twips.
 	 */
-	public Matrix(final Flag hasScale, final UBits nScaleBits, final UBits scaleX, final UBits scaleY,
-			final Flag hasRotate, final UBits nRotateBits, final UBits rotateSkew0, final UBits rotateSkew1,
-			final UBits nTranslateBits, final UBits translateX, final UBits translateY) {
+	public Matrix(final Flag hasScale, final UBits nScaleBits, final FloatFBits scaleX, final FloatFBits scaleY,
+			final Flag hasRotate, final UBits nRotateBits, final FloatFBits rotateSkew0, final FloatFBits rotateSkew1,
+			final UBits nTranslateBits, final Bits translateX, final Bits translateY) {
 
 		this.hasScale = hasScale;
 		this.nScaleBits = nScaleBits;
@@ -161,7 +159,7 @@ public final class Matrix implements IFileElement {
 	 *
 	 * @return The first rotate and skew value.
 	 */
-	public UBits getRotateSkew0() {
+	public FloatFBits getRotateSkew0() {
 		return rotateSkew0;
 	}
 
@@ -170,7 +168,7 @@ public final class Matrix implements IFileElement {
 	 *
 	 * @return The second rotate and skew value.
 	 */
-	public UBits getRotateSkew1() {
+	public FloatFBits getRotateSkew1() {
 		return rotateSkew1;
 	}
 
@@ -179,7 +177,7 @@ public final class Matrix implements IFileElement {
 	 *
 	 * @return The X scale value.
 	 */
-	public UBits getScaleX() {
+	public FloatFBits getScaleX() {
 		return scaleX;
 	}
 
@@ -188,7 +186,7 @@ public final class Matrix implements IFileElement {
 	 *
 	 * @return The Y scale value.
 	 */
-	public UBits getScaleY() {
+	public FloatFBits getScaleY() {
 		return scaleY;
 	}
 
@@ -197,7 +195,7 @@ public final class Matrix implements IFileElement {
 	 *
 	 * @return The X translate value in twips.
 	 */
-	public UBits getTranslateX() {
+	public Bits getTranslateX() {
 		return translateX;
 	}
 
@@ -206,7 +204,7 @@ public final class Matrix implements IFileElement {
 	 *
 	 * @return The Y translate value in twips.
 	 */
-	public UBits getTranslateY() {
+	public Bits getTranslateY() {
 		return translateY;
 	}
 }

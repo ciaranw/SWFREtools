@@ -1,20 +1,6 @@
 package tv.porst.swfretools.dissector.gui.main.flashtree.nodes;
 
-import tv.porst.splib.binaryparser.AsciiString;
-import tv.porst.splib.binaryparser.Bits;
-import tv.porst.splib.binaryparser.Flag;
-import tv.porst.splib.binaryparser.Float16;
-import tv.porst.splib.binaryparser.Float32;
-import tv.porst.splib.binaryparser.Float64;
-import tv.porst.splib.binaryparser.IFileElement;
-import tv.porst.splib.binaryparser.INT16;
-import tv.porst.splib.binaryparser.INT32;
-import tv.porst.splib.binaryparser.INT64;
-import tv.porst.splib.binaryparser.IParsedINTElement;
-import tv.porst.splib.binaryparser.UBits;
-import tv.porst.splib.binaryparser.UINT16;
-import tv.porst.splib.binaryparser.UINT32;
-import tv.porst.splib.binaryparser.UINT8;
+import tv.porst.splib.binaryparser.*;
 import tv.porst.splib.gui.tree.IconNode;
 import tv.porst.swfretools.dissector.gui.main.panels.IExtraPanel;
 import tv.porst.swfretools.parser.actions.as2.Action;
@@ -2008,6 +1994,12 @@ public class FlashTreeNode<T extends IFileElement> extends IconNode {
 			add(new FlashZoneRecordListNode(name, value));
 		}
 	}
+
+    protected void addNode(final String name, final FloatFBits value) {
+        if (value != null) {
+            add(new FlashFloatFBitsNode(name, value));
+        }
+    }
 
 	/**
 	 * Returns the panel that is shown when the node is selected.

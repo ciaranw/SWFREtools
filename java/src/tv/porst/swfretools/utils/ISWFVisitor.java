@@ -1,16 +1,6 @@
 package tv.porst.swfretools.utils;
 
-import tv.porst.splib.binaryparser.AsciiString;
-import tv.porst.splib.binaryparser.Bits;
-import tv.porst.splib.binaryparser.Flag;
-import tv.porst.splib.binaryparser.Float16;
-import tv.porst.splib.binaryparser.Float32;
-import tv.porst.splib.binaryparser.INT16;
-import tv.porst.splib.binaryparser.INT32;
-import tv.porst.splib.binaryparser.UBits;
-import tv.porst.splib.binaryparser.UINT16;
-import tv.porst.splib.binaryparser.UINT32;
-import tv.porst.splib.binaryparser.UINT8;
+import tv.porst.splib.binaryparser.*;
 import tv.porst.swfretools.parser.actions.as2.Action;
 import tv.porst.swfretools.parser.structures.*;
 import tv.porst.swfretools.parser.tags.Tag;
@@ -1162,6 +1152,8 @@ public interface ISWFVisitor {
 	 * @param value The value.
 	 */
 	void visit(Object parent, Tag value);
+    
+    void visit(Object parent, String name, FloatFBits value);
 
 	/**
 	 * Invoked when a SWFFile value is encountered.

@@ -4,18 +4,7 @@ import java.io.File;
 import java.io.PrintStream;
 import java.util.Stack;
 
-import tv.porst.splib.binaryparser.AsciiString;
-import tv.porst.splib.binaryparser.Bits;
-import tv.porst.splib.binaryparser.Flag;
-import tv.porst.splib.binaryparser.Float16;
-import tv.porst.splib.binaryparser.Float32;
-import tv.porst.splib.binaryparser.IFileElement;
-import tv.porst.splib.binaryparser.INT16;
-import tv.porst.splib.binaryparser.INT32;
-import tv.porst.splib.binaryparser.UBits;
-import tv.porst.splib.binaryparser.UINT16;
-import tv.porst.splib.binaryparser.UINT32;
-import tv.porst.splib.binaryparser.UINT8;
+import tv.porst.splib.binaryparser.*;
 import tv.porst.splib.strings.StringHelpers;
 import tv.porst.swfretools.dissector.Constants;
 import tv.porst.swfretools.dissector.gui.main.panels.AS2CodePrinter;
@@ -845,7 +834,14 @@ public final class ConsoleVisitor implements ISWFVisitor {
 		stack.push(tag);
 	}
 
-	@Override
+    @Override
+    public void visit(Object parent, String name, FloatFBits value) {
+        if (value != null) {
+            output.printf(getPadding() + "[%08X:%d]: %s : %f\n", value.getBitPosition() / 8,  value.getBitPosition() % 8, name, value.value());
+        }
+    }
+
+    @Override
 	public void visit(final SWFFile file) {
 		output.println("Flash Dissector " + Constants.VERSION + " (http://www.github.com/sporst/SWFRETools)");
 		output.println("Dumping Flash file " + this.file.getAbsolutePath());
