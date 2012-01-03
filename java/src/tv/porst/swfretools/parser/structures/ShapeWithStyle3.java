@@ -23,43 +23,29 @@ public final class ShapeWithStyle3 implements IFileElement {
 	private final LineStyle3Array lineStyles;
 
 	/**
-	 * Number of fill index bits.
-	 */
-	private final UBits numFillBits;
-
-	/**
-	 * Number of line index bits.
-	 */
-	private final UBits numLineBits;
-
-	/**
 	 * Shape records.
 	 */
-	private final Shape3Record shapeRecord;
+	private final Shape3 shape;
 
 	/**
 	 * Creates a new ShapeWithStyle object.
 	 * 
 	 * @param fillStyles Array of fill styles.
 	 * @param lineStyles Array of line styles.
-	 * @param numFillBits Number of fill index bits.
-	 * @param numLineBits Number of line index bits.
-	 * @param shapeRecord Shape records.
+	 * @param shape Shape records.
 	 */
 	public ShapeWithStyle3(final FillStyle3Array fillStyles, final LineStyle3Array lineStyles,
-			final UBits numFillBits, final UBits numLineBits, final Shape3Record shapeRecord) {
+			Shape3 shape) {
 
 		this.fillStyles = fillStyles;
 		this.lineStyles = lineStyles;
-		this.numFillBits = numFillBits;
-		this.numLineBits = numLineBits;
-		this.shapeRecord = shapeRecord;
+		this.shape = shape;
 
 	}
 
 	@Override
 	public int getBitLength() {
-		return SWFParserHelpers.addBitLengths(fillStyles, lineStyles, numFillBits, numLineBits, shapeRecord);
+		return SWFParserHelpers.addBitLengths(fillStyles, lineStyles, shape);
 	}
 
 	@Override
@@ -86,29 +72,11 @@ public final class ShapeWithStyle3 implements IFileElement {
 	}
 
 	/**
-	 * Returns the number of fill index bits.
-	 *
-	 * @return The number of fill index bits.
-	 */
-	public UBits getNumFillBits() {
-		return numFillBits;
-	}
-
-	/**
-	 * Returns the number of line index bits.
-	 *
-	 * @return The number of line index bits.
-	 */
-	public UBits getNumLineBits() {
-		return numLineBits;
-	}
-
-	/**
 	 * Returns the shape records.
 	 *
 	 * @return The shape records.
 	 */
-	public Shape3Record getShapeRecord() {
-		return shapeRecord;
+	public Shape3 getShape() {
+		return shape;
 	}
 }

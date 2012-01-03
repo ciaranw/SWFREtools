@@ -31,36 +31,10 @@ public final class ShapeWithStyle3Parser {
 
 		final FillStyle3Array fillStyles = FillStyle3ArrayParser.parse(parser, fieldName + "::FillStyles");
 		final LineStyle3Array lineStyles = LineStyle3ArrayParser.parse(parser, fieldName + "::LineStyles");
-		final UBits numFillBits = parseUBits(parser, 4, 0x00006, fieldName + "::NumFillBits");
-		final UBits numLineBits = parseUBits(parser, 4, 0x00006, fieldName + "::NumLineBits");
-		final List<Shape3Record> shapeRecords = new ArrayList<Shape3Record>();
-
-		Shape3Record shapeRecord = null;
-
-		UBits currentNumFillBits = numFillBits;
-		UBits currentNumLineBits = numLineBits;
-
-		do {
-
-			shapeRecord = ShapeRecord3Parser.parse(parser, currentNumFillBits, currentNumLineBits, fieldName + "::ShapeRecord");
-
-			shapeRecords.add(shapeRecord);
-
-			if (shapeRecord instanceof StyleChangeRecord3) {
-
-				if (((StyleChangeRecord3) shapeRecord).getNumFillBits() != null) {
-					currentNumFillBits = ((StyleChangeRecord3) shapeRecord).getNumFillBits();
-				}
-
-				if (((StyleChangeRecord3) shapeRecord).getNumLineBits() != null) {
-					currentNumLineBits = ((StyleChangeRecord3) shapeRecord).getNumLineBits();
-				}
-			}
-
-		} while (!(shapeRecord instanceof EndShapeRecord));
+		Shape3 shape = Shape3Parser.parse(parser, fieldName + "::Shape");
 
 		parser.align();
 
-		return new ShapeWithStyle3(fillStyles, lineStyles, numFillBits, numLineBits, shapeRecord);
+		return new ShapeWithStyle3(fillStyles, lineStyles, shape);
 	}
 }

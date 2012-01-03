@@ -866,6 +866,24 @@ public interface ISWFVisitor {
 	 */
 	void visit(Object parent, String name, Shape3RecordList value);
 
+    /**
+     * Invoked when a Shape3 value is encountered.
+     *
+     * @param parent The parent element of the value.
+     * @param name The name of the value.
+     * @param value The value.
+     */
+    void visit(Object parent, String name, Shape4 value);
+
+    /**
+     * Invoked when a Shape4RecordList value is encountered.
+     *
+     * @param parent The parent element of the value.
+     * @param name The name of the value.
+     * @param value The value.
+     */
+    void visit(Object parent, String name, Shape4RecordList value);
+
 	/**
 	 * Invoked when a ShapeList value is encountered.
 	 * 

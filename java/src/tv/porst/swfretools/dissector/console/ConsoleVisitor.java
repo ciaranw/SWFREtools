@@ -646,6 +646,16 @@ public final class ConsoleVisitor implements ISWFVisitor {
 		handleList(parent, name, value);
 	}
 
+    @Override
+    public void visit(final Object parent, final String name, final Shape4 value) {
+        handleElement(parent, name, value);
+    }
+
+    @Override
+    public void visit(final Object parent, final String name, final Shape4RecordList value) {
+        handleList(parent, name, value);
+    }
+
 	@Override
 	public void visit(final Object parent, final String name, final ShapeList value) {
 		handleList(parent, name, value);

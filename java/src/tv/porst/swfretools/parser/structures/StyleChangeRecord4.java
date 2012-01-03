@@ -1,5 +1,6 @@
 package tv.porst.swfretools.parser.structures;
 
+import tv.porst.splib.binaryparser.Bits;
 import tv.porst.splib.binaryparser.Flag;
 import tv.porst.splib.binaryparser.UBits;
 import tv.porst.swfretools.parser.SWFParserHelpers;
@@ -50,12 +51,12 @@ public final class StyleChangeRecord4 implements Shape4Record {
 	/**
 	 * Delta X value.
 	 */
-	private final UBits moveDeltaX;
+	private final Bits moveDeltaX;
 
 	/**
 	 * Delta Y value.
 	 */
-	private final UBits moveDeltaY;
+	private final Bits moveDeltaY;
 
 	/**
 	 * Fill 0 style.
@@ -115,7 +116,7 @@ public final class StyleChangeRecord4 implements Shape4Record {
 	public StyleChangeRecord4(final Flag typeFlag, final Flag stateNewStyles,
 			final Flag stateLineStyle, final Flag stateFillStyle1, final Flag stateFillStyle0,
 			final Flag stateMoveTo, final UBits moveBits,
-			final UBits moveDeltaX, final UBits moveDeltaY, final UBits fillStyle0, final UBits fillStyle1,
+			final Bits moveDeltaX, final Bits moveDeltaY, final UBits fillStyle0, final UBits fillStyle1,
 			final UBits lineStyle, final FillStyle3Array fillStyles,
 			final LineStyle4Array lineStyles, final UBits numFillBits, final UBits numLineBits) {
 
@@ -208,7 +209,7 @@ public final class StyleChangeRecord4 implements Shape4Record {
 	 *
 	 * @return The delta X value.
 	 */
-	public UBits getMoveDeltaX() {
+	public Bits getMoveDeltaX() {
 		return moveDeltaX;
 	}
 
@@ -217,7 +218,7 @@ public final class StyleChangeRecord4 implements Shape4Record {
 	 *
 	 * @return The delta Y value.
 	 */
-	public UBits getMoveDeltaY() {
+	public Bits getMoveDeltaY() {
 		return moveDeltaY;
 	}
 

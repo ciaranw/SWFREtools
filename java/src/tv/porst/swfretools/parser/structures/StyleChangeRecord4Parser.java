@@ -1,7 +1,10 @@
 package tv.porst.swfretools.parser.structures;
 
 import static tv.porst.swfretools.parser.SWFParserHelpers.parseFlag;
+import static tv.porst.swfretools.parser.SWFParserHelpers.parseSBitsIf;
 import static tv.porst.swfretools.parser.SWFParserHelpers.parseUBitsIf;
+
+import tv.porst.splib.binaryparser.Bits;
 import tv.porst.splib.binaryparser.Flag;
 import tv.porst.splib.binaryparser.UBits;
 import tv.porst.swfretools.parser.SWFBinaryParser;
@@ -36,8 +39,8 @@ public final class StyleChangeRecord4Parser {
 		final Flag stateFillStyle0 = parseFlag(parser, 0x00006, fieldName + "::StateFillStyle0");
 		final Flag stateMoveTo = parseFlag(parser, 0x00006, fieldName + "::StateMoveTo");
 		final UBits moveBits = parseUBitsIf(parser, 5, 0x00006, stateMoveTo, fieldName + "::MoveBits");
-		final UBits moveDeltaX = parseUBitsIf(parser, moveBits == null ? 0 : moveBits.value(), 0x00006, stateMoveTo, fieldName + "::MoveDeltaX");
-		final UBits moveDeltaY = parseUBitsIf(parser, moveBits == null ? 0 : moveBits.value(), 0x00006, stateMoveTo, fieldName + "::MoveDeltaY");
+		final Bits moveDeltaX = parseSBitsIf(parser, moveBits == null ? 0 : moveBits.value(), 0x00006, stateMoveTo.value(), fieldName + "::MoveDeltaX");
+		final Bits moveDeltaY = parseSBitsIf(parser, moveBits == null ? 0 : moveBits.value(), 0x00006, stateMoveTo.value(), fieldName + "::MoveDeltaY");
 		final UBits fillStyle0 = parseUBitsIf(parser, fillBits == null ? 0 : fillBits.value(), 0x00006, stateFillStyle0, fieldName + "::FillStyle0");
 		final UBits fillStyle1 = parseUBitsIf(parser, fillBits == null ? 0 : fillBits.value(), 0x00006, stateFillStyle1, fieldName + "::FillStyle1");
 		final UBits lineStyle = parseUBitsIf(parser, lineBits == null ? 0 : lineBits.value(), 0x00006, stateLineStyle, fieldName + "::LineStyle");
@@ -53,6 +56,6 @@ public final class StyleChangeRecord4Parser {
 
 		return new StyleChangeRecord4(typeFlag, stateNewStyles, stateLineStyle, stateFillStyle1,
 				stateFillStyle0, stateMoveTo, moveBits, moveDeltaX, moveDeltaY, fillStyle0, fillStyle1,
-				lineStyle, fillStyles, lineStyles, numFillBits, numLineBits);
+				lineStyle, fillStyles, lineStyles, fillBits, lineBits);
 	}
 }

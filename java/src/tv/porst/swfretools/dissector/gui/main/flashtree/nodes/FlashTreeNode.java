@@ -1599,17 +1599,41 @@ public class FlashTreeNode<T extends IFileElement> extends IconNode {
 		}
 	}
 
-	/**
-	 * Adds a new child node that represents the value argument.
-	 * 
-	 * @param name The name of the child node.
-	 * @param value The Flash structure represented by the node.
-	 */
-	protected void addNode(final String name, final Shape4Record value) {
-		if (value != null) {
-			add(new FlashShapeRecord4Node(name, value));
-		}
-	}
+    /**
+     * Adds a new child node that represents the value argument.
+     *
+     * @param name The name of the child node.
+     * @param value The Flash structure represented by the node.
+     */
+    protected void addNode(final String name, final Shape4 value) {
+        if (value != null) {
+            add(new FlashShape4Node(name, value));
+        }
+    }
+
+    /**
+     * Adds a new child node that represents the value argument.
+     *
+     * @param name The name of the child node.
+     * @param value The Flash structure represented by the node.
+     */
+    protected void addNode(final String name, final Shape4Record value) {
+        if (value != null) {
+            add(new FlashShapeRecord4Node(name, value));
+        }
+    }
+
+    /**
+     * Adds a new child node that represents the value argument.
+     *
+     * @param name The name of the child node.
+     * @param value The Flash structure represented by the node.
+     */
+    protected void addNode(final String name, final Shape4RecordList value) {
+        if (value != null) {
+            add(new FlashShapeRecord4ListNode(name, value));
+        }
+    }
 
 	/**
 	 * Adds a new child node that represents the value argument.

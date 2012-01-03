@@ -2943,6 +2943,57 @@ public final class SWFIterator {
 		}
 	}
 
+    /**
+     * Visits a Shape4 object.
+     *
+     * @param shape The visited object.
+     * @param visitor The visitor that is invoked for all elements of the visited object.
+     */
+    public static void visit(final Shape4 shape, final ISWFVisitor visitor) {
+
+        if (shape == null) {
+            return;
+        }
+
+        visitor.visit(shape, "NumFillBits", shape.getNumFillBits());
+        visitor.visit(shape, "NumLineBits", shape.getNumLineBits());
+        visitor.visit(shape, "ShapeRecord", shape.getShapeRecord());
+        visit(shape.getShapeRecord(), visitor);
+    }
+
+    /**
+     * Visits a ShapeRecordList object.
+     *
+     * @param shapeRecordList The visited object.
+     * @param visitor The visitor that is invoked for all elements of the visited object.
+     */
+    public static void visit(final Shape4RecordList shapeRecordList, final ISWFVisitor visitor) {
+
+        if (shapeRecordList == null) {
+            return;
+        }
+
+        for (final Shape4Record shapeRecord : shapeRecordList) {
+
+            if (shapeRecord instanceof CurvedEdgeRecord) {
+                visitor.visit(shapeRecordList, "ShapeRecord", (CurvedEdgeRecord) shapeRecord);
+                visit((CurvedEdgeRecord) shapeRecord, visitor);
+            }
+            else if (shapeRecord instanceof EndShapeRecord) {
+                visitor.visit(shapeRecordList, "ShapeRecord", (EndShapeRecord) shapeRecord);
+                visit((EndShapeRecord) shapeRecord, visitor);
+            }
+            else if (shapeRecord instanceof StraightEdgeRecord) {
+                visitor.visit(shapeRecordList, "ShapeRecord", (StraightEdgeRecord) shapeRecord);
+                visit((StraightEdgeRecord) shapeRecord, visitor);
+            }
+            else if (shapeRecord instanceof StyleChangeRecord4) {
+                visitor.visit(shapeRecordList, "ShapeRecord", (StyleChangeRecord4) shapeRecord);
+                visit((StyleChangeRecord4) shapeRecord, visitor);
+            }
+        }
+    }
+
 	/**
 	 * Visits a ShapeList object.
 	 * 
@@ -3030,28 +3081,10 @@ public final class SWFIterator {
 		visit(shapeWithStyle.getFillStyles(), visitor);
 		visitor.visit(shapeWithStyle, "LineStyles", shapeWithStyle.getLineStyles());
 		visit(shapeWithStyle.getLineStyles(), visitor);
-		visitor.visit(shapeWithStyle, "NumFillBits", shapeWithStyle.getNumFillBits());
-		visitor.visit(shapeWithStyle, "NumLineBits", shapeWithStyle.getNumLineBits());
+		visitor.visit(shapeWithStyle, "Shape", shapeWithStyle.getShape());
+        visit(shapeWithStyle.getShape(), visitor);
+    }
 
-		final Shape3Record shapeRecord = shapeWithStyle.getShapeRecord();
-
-		if (shapeRecord instanceof CurvedEdgeRecord) {
-			visitor.visit(shapeWithStyle, "ShapeRecord", (CurvedEdgeRecord) shapeRecord);
-			visit((CurvedEdgeRecord) shapeRecord, visitor);
-		}
-		else if (shapeRecord instanceof EndShapeRecord) {
-			visitor.visit(shapeWithStyle, "ShapeRecord", (EndShapeRecord) shapeRecord);
-			visit((EndShapeRecord) shapeRecord, visitor);
-		}
-		else if (shapeRecord instanceof StraightEdgeRecord) {
-			visitor.visit(shapeWithStyle, "ShapeRecord", (StraightEdgeRecord) shapeRecord);
-			visit((StraightEdgeRecord) shapeRecord, visitor);
-		}
-		else if (shapeRecord instanceof StyleChangeRecord3) {
-			visitor.visit(shapeWithStyle, "ShapeRecord", (StyleChangeRecord3) shapeRecord);
-			visit((StyleChangeRecord3) shapeRecord, visitor);
-		}
-	}
 
 	/**
 	 * Visits a ShapeWithStyle4 object.
@@ -3069,27 +3102,8 @@ public final class SWFIterator {
 		visit(shapeWithStyle.getFillStyles(), visitor);
 		visitor.visit(shapeWithStyle, "LineStyles", shapeWithStyle.getLineStyles());
 		visit(shapeWithStyle.getLineStyles(), visitor);
-		visitor.visit(shapeWithStyle, "NumFillBits", shapeWithStyle.getNumFillBits());
-		visitor.visit(shapeWithStyle, "NumLineBits", shapeWithStyle.getNumLineBits());
-
-		final Shape4Record shapeRecord = shapeWithStyle.getShapeRecord();
-
-		if (shapeRecord instanceof CurvedEdgeRecord) {
-			visitor.visit(shapeWithStyle, "CurvedEdgeRecord", (CurvedEdgeRecord) shapeRecord);
-			visit((CurvedEdgeRecord) shapeRecord, visitor);
-		}
-		else if (shapeRecord instanceof EndShapeRecord) {
-			visitor.visit(shapeWithStyle, "EndShapeRecord", (EndShapeRecord) shapeRecord);
-			visit((EndShapeRecord) shapeRecord, visitor);
-		}
-		else if (shapeRecord instanceof StraightEdgeRecord) {
-			visitor.visit(shapeWithStyle, "StraightEdgeRecord", (StraightEdgeRecord) shapeRecord);
-			visit((StraightEdgeRecord) shapeRecord, visitor);
-		}
-		else if (shapeRecord instanceof StyleChangeRecord4) {
-			visitor.visit(shapeWithStyle, "StyleChangeRecord", (StyleChangeRecord4) shapeRecord);
-			visit((StyleChangeRecord4) shapeRecord, visitor);
-		}
+        visitor.visit(shapeWithStyle, "Shape", shapeWithStyle.getShape());
+        visit(shapeWithStyle.getShape(), visitor);
 	}
 
 	/**

@@ -11,7 +11,7 @@ import tv.porst.swfretools.parser.SWFParserHelpers;
  * @author sp
  *
  */
-public final class StyleChangeRecord implements ShapeRecord {
+public class StyleChangeRecord implements ShapeRecord {
 
 	/**
 	 * Record type flag.

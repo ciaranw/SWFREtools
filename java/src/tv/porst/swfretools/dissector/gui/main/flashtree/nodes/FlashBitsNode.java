@@ -19,6 +19,6 @@ public final class FlashBitsNode extends FlashTreeNode<Bits> {
 
 	@Override
 	public String toString() {
-		return String.format("%s : UBITS (%d)", getName(), getUserObject().value());
+		return String.format("%s : BITS (%d)", getName(), getUserObject().value());
 	}
 }
