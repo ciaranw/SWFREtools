@@ -31,9 +31,9 @@ public final class Shape4Parser {
 
 		final UBits numFillBits = parseUBits(parser, 4, 0x00006, fieldName + "::NumFillBits");
 		final UBits numLineBits = parseUBits(parser, 4, 0x00006, fieldName + "::NumLineBits");
-		final List<Shape4Record> shapeRecords = new ArrayList<Shape4Record>();
+		final List<ShapeRecord> shapeRecords = new ArrayList<ShapeRecord>();
 
-		Shape4Record shapeRecord = null;
+		ShapeRecord shapeRecord = null;
 
 		UBits currentNumFillBits = numFillBits;
 		UBits currentNumLineBits = numLineBits;
@@ -44,7 +44,7 @@ public final class Shape4Parser {
 
 			shapeRecords.add(shapeRecord);
 
-			if (shapeRecord instanceof StyleChangeRecord4) {
+			if (shapeRecord instanceof StyleChangeRecord4 && ((StyleChangeRecord4) shapeRecord).getStateNewStyles().value()) {
 				currentNumFillBits = ((StyleChangeRecord4) shapeRecord).getNumFillBits();
 				currentNumLineBits = ((StyleChangeRecord4) shapeRecord).getNumLineBits();
 			}

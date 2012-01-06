@@ -3,13 +3,14 @@ package tv.porst.swfretools.dissector.gui.main.flashtree.nodes;
 import tv.porst.swfretools.parser.structures.CurvedEdgeRecord;
 import tv.porst.swfretools.parser.structures.EndShapeRecord;
 import tv.porst.swfretools.parser.structures.Shape4Record;
+import tv.porst.swfretools.parser.structures.ShapeRecord;
 import tv.porst.swfretools.parser.structures.StraightEdgeRecord;
 import tv.porst.swfretools.parser.structures.StyleChangeRecord4;
 
 /**
  * Node that represents a ShapeRecord4 object in the Flash tree.
  */
-public final class FlashShapeRecord4Node extends FlashTreeNode<Shape4Record> {
+public final class FlashShapeRecord4Node extends FlashTreeNode<ShapeRecord> {
 
 	/**
 	 * Returns the exact shape name for a given shape record.
@@ -18,7 +19,7 @@ public final class FlashShapeRecord4Node extends FlashTreeNode<Shape4Record> {
 	 * 
 	 * @return The shape name of the shape record.
 	 */
-	private static String getShapeName(final Shape4Record shapeRecord) {
+	private static String getShapeName(final ShapeRecord shapeRecord) {
 
 		if (shapeRecord instanceof CurvedEdgeRecord) {
 			return "CurvedEdgeRecord";
@@ -53,7 +54,7 @@ public final class FlashShapeRecord4Node extends FlashTreeNode<Shape4Record> {
 	 * Creates the child nodes of the node.
 	 */
 	private void createChildren() {
-		final Shape4Record shapeRecord = getUserObject();
+		final ShapeRecord shapeRecord = getUserObject();
 
 		if (shapeRecord instanceof CurvedEdgeRecord) {
 			final CurvedEdgeRecord crecord = (CurvedEdgeRecord) shapeRecord;

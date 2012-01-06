@@ -2922,7 +2922,7 @@ public final class SWFIterator {
 			return;
 		}
 
-		for (final Shape3Record shapeRecord : shapeRecordList) {
+		for (final ShapeRecord shapeRecord : shapeRecordList) {
 
 			if (shapeRecord instanceof CurvedEdgeRecord) {
 				visitor.visit(shapeRecordList, "ShapeRecord", (CurvedEdgeRecord) shapeRecord);
@@ -2973,7 +2973,7 @@ public final class SWFIterator {
             return;
         }
 
-        for (final Shape4Record shapeRecord : shapeRecordList) {
+        for (final ShapeRecord shapeRecord : shapeRecordList) {
 
             if (shapeRecord instanceof CurvedEdgeRecord) {
                 visitor.visit(shapeRecordList, "ShapeRecord", (CurvedEdgeRecord) shapeRecord);

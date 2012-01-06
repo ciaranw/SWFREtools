@@ -4,6 +4,7 @@ import tv.porst.swfretools.parser.structures.Shape3Record;
 import tv.porst.swfretools.parser.structures.Shape3RecordList;
 import tv.porst.swfretools.parser.structures.Shape4Record;
 import tv.porst.swfretools.parser.structures.Shape4RecordList;
+import tv.porst.swfretools.parser.structures.ShapeRecord;
 
 /**
  * Node that represents a ShapeRecord3List object in the Flash tree.
@@ -29,7 +30,7 @@ public final class FlashShapeRecord4ListNode extends FlashTreeNode<Shape4RecordL
 
 		int counter = 0;
 
-		for (final Shape4Record shape: getUserObject()) {
+		for (final ShapeRecord shape: getUserObject()) {
 
 			addNode(String.format("%s[%d]", getName(), counter), shape);
 

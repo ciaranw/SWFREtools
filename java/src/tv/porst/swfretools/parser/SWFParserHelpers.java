@@ -356,13 +356,27 @@ public final class SWFParserHelpers {
 	}
     
     public static FloatFBits parseFloatFBits(SWFBinaryParser parser, int numberOfBits, int errorCode, String fieldName) throws SWFParserException {
+        return parseFloatFBits(parser, numberOfBits, errorCode, 16, fieldName);
+    }
+
+    public static FloatFBits parseFloatFBits(SWFBinaryParser parser, int numberOfBits, int numLowBits, int errorCode, String fieldName) throws SWFParserException {
         throwIfB(parser, numberOfBits, errorCode, fieldName);
 
-        return parser.readFBits(numberOfBits);
+        return parser.readFBits(numberOfBits, numLowBits);
     }
 
     public static FloatFBits parseFloatFBitsIf(SWFBinaryParser parser, int numberOfBits, int errorCode, boolean condition, String fieldName) throws SWFParserException {
         return condition ? parseFloatFBits(parser, numberOfBits, errorCode, fieldName) : null;
+    }
+    
+    public static FloatFBits parseFixed16If(SWFBinaryParser parser, int errorCode, boolean condition, String fieldName) throws SWFParserException {
+        return condition ? parseFixed16(parser, errorCode, fieldName) : null;
+    }
+
+    public static FloatFBits parseFixed16(SWFBinaryParser parser, int errorCode, String fieldName) throws SWFParserException {
+        throwIf(parser, 2, errorCode, fieldName);
+
+        return parser.readFixed16();
     }
 
 

@@ -24,7 +24,7 @@ public final class ShapeRecord3Parser {
 	 * 
 	 * @throws SWFParserException Thrown if the structure could not be parsed.
 	 */
-	public static Shape3Record parse(final SWFBinaryParser parser, final UBits numFillBits, final UBits numLineBits, final String fieldName) throws SWFParserException {
+	public static ShapeRecord parse(final SWFBinaryParser parser, final UBits numFillBits, final UBits numLineBits, final String fieldName) throws SWFParserException {
 
 		final UBits first6 = parser.peekBits(6);
 

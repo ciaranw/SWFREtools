@@ -8,5 +8,5 @@ import tv.porst.splib.binaryparser.IFileElement;
  * @author sp
  *
  */
-public interface Shape4Record extends IFileElement {
+public interface Shape4Record extends Shape3Record, IFileElement {
 }

@@ -2,9 +2,9 @@ package tv.porst.swfretools.parser.structures;
 
 import java.util.List;
 
-public class Shape3RecordList extends ElementList<Shape3Record> {
+public class Shape3RecordList extends ElementList<ShapeRecord> {
 
-	public Shape3RecordList(final List<Shape3Record> elements) {
+	public Shape3RecordList(final List<ShapeRecord> elements) {
 		super(elements);
 	}
 }

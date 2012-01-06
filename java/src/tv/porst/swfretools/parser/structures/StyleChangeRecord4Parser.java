@@ -56,6 +56,6 @@ public final class StyleChangeRecord4Parser {
 
 		return new StyleChangeRecord4(typeFlag, stateNewStyles, stateLineStyle, stateFillStyle1,
 				stateFillStyle0, stateMoveTo, moveBits, moveDeltaX, moveDeltaY, fillStyle0, fillStyle1,
-				lineStyle, fillStyles, lineStyles, fillBits, lineBits);
+				lineStyle, fillStyles, lineStyles, numFillBits, numLineBits);
 	}
 }

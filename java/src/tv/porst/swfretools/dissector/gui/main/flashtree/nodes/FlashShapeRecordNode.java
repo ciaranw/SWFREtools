@@ -5,6 +5,8 @@ import tv.porst.swfretools.parser.structures.EndShapeRecord;
 import tv.porst.swfretools.parser.structures.ShapeRecord;
 import tv.porst.swfretools.parser.structures.StraightEdgeRecord;
 import tv.porst.swfretools.parser.structures.StyleChangeRecord;
+import tv.porst.swfretools.parser.structures.StyleChangeRecord3;
+import tv.porst.swfretools.parser.structures.StyleChangeRecord4;
 
 /**
  * Node that represents a ShapeRecord object in the Flash tree.
@@ -29,6 +31,12 @@ public final class FlashShapeRecordNode extends FlashTreeNode<ShapeRecord> {
 		else if (shapeRecord instanceof StyleChangeRecord) {
 			return "StyleChangeRecord";
 		}
+        else if (shapeRecord instanceof StyleChangeRecord3) {
+            return "StyleChangeRecord";
+        }
+        else if (shapeRecord instanceof StyleChangeRecord4) {
+            return "StyleChangeRecord";
+        }
 		else if (shapeRecord instanceof EndShapeRecord) {
 			return "EndShapeRecord";
 		}
@@ -94,6 +102,44 @@ public final class FlashShapeRecordNode extends FlashTreeNode<ShapeRecord> {
 			addNode("TypeFlag", crecord.getNumFillBits());
 			addNode("TypeFlag", crecord.getNumLineBits());
 		}
+        else if (shapeRecord instanceof StyleChangeRecord3) {
+            final StyleChangeRecord3 crecord = (StyleChangeRecord3) shapeRecord;
+            addNode("TypeFlag", crecord.getTypeFlag());
+            addNode("StateNewStyles", crecord.getStateNewStyles());
+            addNode("StateLineStyle", crecord.getStateLineStyle());
+            addNode("FillStyle1", crecord.getFillStyle1());
+            addNode("FillStyle0", crecord.getFillStyle0());
+            addNode("StateMoveTo", crecord.getStateMoveTo());
+            addNode("MoveBits", crecord.getMoveBits());
+            addNode("MoveDeltaX", crecord.getMoveDeltaX());
+            addNode("MoveDeltaY", crecord.getMoveDeltaY());
+            addNode("FillStyle0", crecord.getFillStyle0());
+            addNode("FillStyle1", crecord.getFillStyle1());
+            addNode("LineStyle", crecord.getLineStyle());
+            addNode("FillStyles", crecord.getFillStyles());
+            addNode("LineStyles", crecord.getLineStyles());
+            addNode("TypeFlag", crecord.getNumFillBits());
+            addNode("TypeFlag", crecord.getNumLineBits());
+        }
+        else if (shapeRecord instanceof StyleChangeRecord4) {
+            final StyleChangeRecord4 crecord = (StyleChangeRecord4) shapeRecord;
+            addNode("TypeFlag", crecord.getTypeFlag());
+            addNode("StateNewStyles", crecord.getStateNewStyles());
+            addNode("StateLineStyle", crecord.getStateLineStyle());
+            addNode("FillStyle1", crecord.getFillStyle1());
+            addNode("FillStyle0", crecord.getFillStyle0());
+            addNode("StateMoveTo", crecord.getStateMoveTo());
+            addNode("MoveBits", crecord.getMoveBits());
+            addNode("MoveDeltaX", crecord.getMoveDeltaX());
+            addNode("MoveDeltaY", crecord.getMoveDeltaY());
+            addNode("FillStyle0", crecord.getFillStyle0());
+            addNode("FillStyle1", crecord.getFillStyle1());
+            addNode("LineStyle", crecord.getLineStyle());
+            addNode("FillStyles", crecord.getFillStyles());
+            addNode("LineStyles", crecord.getLineStyles());
+            addNode("TypeFlag", crecord.getNumFillBits());
+            addNode("TypeFlag", crecord.getNumLineBits());
+        }
 		else if (shapeRecord instanceof EndShapeRecord) {
 			final EndShapeRecord crecord = (EndShapeRecord) shapeRecord;
 			addNode("TypeFlag", crecord.getTypeFlag());

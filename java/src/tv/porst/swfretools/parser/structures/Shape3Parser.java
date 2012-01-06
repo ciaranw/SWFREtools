@@ -31,9 +31,9 @@ public final class Shape3Parser {
 
 		final UBits numFillBits = parseUBits(parser, 4, 0x00006, fieldName + "::NumFillBits");
 		final UBits numLineBits = parseUBits(parser, 4, 0x00006, fieldName + "::NumLineBits");
-		final List<Shape3Record> shapeRecords = new ArrayList<Shape3Record>();
+		final List<ShapeRecord> shapeRecords = new ArrayList<ShapeRecord>();
 
-		Shape3Record shapeRecord = null;
+		ShapeRecord shapeRecord = null;
 
 		UBits currentNumFillBits = numFillBits;
 		UBits currentNumLineBits = numLineBits;

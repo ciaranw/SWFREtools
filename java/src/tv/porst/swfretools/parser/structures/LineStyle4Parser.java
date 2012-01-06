@@ -1,9 +1,13 @@
 package tv.porst.swfretools.parser.structures;
 
+import static tv.porst.swfretools.parser.SWFParserHelpers.parseFixed16If;
+import static tv.porst.swfretools.parser.SWFParserHelpers.parseFloatFBitsIf;
 import static tv.porst.swfretools.parser.SWFParserHelpers.parseUBits;
 import static tv.porst.swfretools.parser.SWFParserHelpers.parseFlag;
 import static tv.porst.swfretools.parser.SWFParserHelpers.parseUINT16;
 import static tv.porst.swfretools.parser.SWFParserHelpers.parseUINT16If;
+
+import tv.porst.splib.binaryparser.FloatFBits;
 import tv.porst.splib.binaryparser.UBits;
 import tv.porst.splib.binaryparser.Flag;
 import tv.porst.splib.binaryparser.UINT16;
@@ -39,7 +43,7 @@ public final class LineStyle4Parser {
 		final UBits reserved = parseUBits(parser, 5, 0x00006, fieldName + "::Reserved");
 		final Flag noClose = parseFlag(parser, 0x00006, fieldName + "::NoClose");
 		final UBits endCapStyle = parseUBits(parser, 2, 0x00006, fieldName + "::EndCapStyle");
-		final UINT16 miterLimitFactor = parseUINT16If(parser, 0x00006, joinStyle.value() == 2, fieldName + "::MiterLimitFactor");
+		final FloatFBits miterLimitFactor = parseFixed16If(parser, 0x00006, joinStyle.value() == 2, fieldName + "::MiterLimitFactor");
 		final RGBA color = RGBAParser.parseIf(parser, !hasFillFlag.value(), fieldName + "::Color");
 		final FillStyle3 fillType = FillStyle3Parser.parseIf(parser, hasFillFlag, fieldName + "::FillType");
 

@@ -11,7 +11,7 @@ import tv.porst.swfretools.parser.SWFParserHelpers;
  * @author sp
  *
  */
-public final class EndShapeRecord implements ShapeRecord, Shape3Record, Shape4Record, IFileElement {
+public final class EndShapeRecord implements ShapeRecord, IFileElement {
 
 	/**
 	 * Type flag.

@@ -2,6 +2,7 @@ package tv.porst.swfretools.dissector.gui.main.flashtree.nodes;
 
 import tv.porst.swfretools.parser.structures.Shape3Record;
 import tv.porst.swfretools.parser.structures.Shape3RecordList;
+import tv.porst.swfretools.parser.structures.ShapeRecord;
 
 /**
  * Node that represents a ShapeRecord3List object in the Flash tree.
@@ -27,7 +28,7 @@ public final class FlashShapeRecord3ListNode extends FlashTreeNode<Shape3RecordL
 
 		int counter = 0;
 
-		for (final Shape3Record shape: getUserObject()) {
+		for (final ShapeRecord shape: getUserObject()) {
 
 			addNode(String.format("%s[%d]", getName(), counter), shape);
 

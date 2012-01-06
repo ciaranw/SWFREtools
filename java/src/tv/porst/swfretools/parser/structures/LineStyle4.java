@@ -1,6 +1,7 @@
 package tv.porst.swfretools.parser.structures;
 
 import tv.porst.splib.binaryparser.Flag;
+import tv.porst.splib.binaryparser.FloatFBits;
 import tv.porst.splib.binaryparser.IFileElement;
 import tv.porst.splib.binaryparser.UBits;
 import tv.porst.splib.binaryparser.UINT16;
@@ -67,7 +68,7 @@ public class LineStyle4 implements IFileElement {
 	/**
 	 * Miter limit factor.
 	 */
-	private final UINT16 miterLimitFactor;
+	private final FloatFBits miterLimitFactor;
 
 	/**
 	 * Color value including alpha channel.
@@ -99,7 +100,7 @@ public class LineStyle4 implements IFileElement {
 	public LineStyle4(final UINT16 width, final UBits startCapStyle, final UBits joinStyle,
 			final Flag hasFillFlag, final Flag noHScaleFlag, final Flag noVScaleFlag,
 			final Flag pixelHintingFlag, final UBits reserved, final Flag noClose,
-			final UBits endCapStyle, final UINT16 miterLimitFactor, final RGBA color,
+			final UBits endCapStyle, final FloatFBits miterLimitFactor, final RGBA color,
 			final FillStyle3 fillType) {
 
 		this.width = width;
@@ -180,7 +181,7 @@ public class LineStyle4 implements IFileElement {
 	 *
 	 * @return The miter limit factor.
 	 */
-	public UINT16 getMiterLimitFactor() {
+	public FloatFBits getMiterLimitFactor() {
 		return miterLimitFactor;
 	}
 
